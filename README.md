@@ -1,0 +1,1 @@
+This is short implementation of PSO algorithm in Python.
