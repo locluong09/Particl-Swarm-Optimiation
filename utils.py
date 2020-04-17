@@ -64,7 +64,7 @@ class Particle():
 		self.position = [0 for i in range(self.dimensions)]
 		self.velocity = None
 		self.fitness = 0
-		self.best_fitness = float('inf')
+		self.best_fitness = 0#float('inf')
 
 	
 	def set_position(self, lower, upper):
@@ -103,6 +103,6 @@ class Particle():
 		for i in range(self.dimensions):
 			self.position[i] += self.velocity[i]
 			self.position[i] = np.clip(self.position[i],lower[i], upper[i])
-		print(self.position)
+		# print(self.position)
 
 
