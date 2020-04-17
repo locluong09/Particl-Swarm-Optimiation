@@ -63,15 +63,14 @@ class Particle():
 		self.dimensions = dimensions
 		self.position = [0 for i in range(self.dimensions)]
 		self.velocity = None
-		self.fitness = 0
-		self.best_fitness = 0#float('inf')
+		self.fitness = float("inf")
+		self.best_fitness = float('inf')
 
 	
 	def set_position(self, lower, upper):
 		
 		for i in range(self.dimensions):
 			self.position[i] = np.random.uniform(lower[i], upper[i])
-		# print(self.position)
 		self.pbest = self.position
 
 	def set_velocity(self, max_velocity, min_velocity):
@@ -83,6 +82,7 @@ class Particle():
 	def calculate_fitness(self, ob_class):
 		ob_func = ob_class.ob_func
 		self.fitness =  ob_func(*self.position)
+		
 
 	def update_velocity(self, w, c1, c2, gbest):
 		velocity_new = np.zeros_like(self.position)
@@ -97,12 +97,12 @@ class Particle():
 			velocity_new[i] = np.clip(velocity_new[i], self.min_velocity, self.max_velocity)
 
 		self.velocity = velocity_new
-		# print(self.velocity)
+		
 
 	def update_position(self, lower, upper):
 		for i in range(self.dimensions):
 			self.position[i] += self.velocity[i]
 			self.position[i] = np.clip(self.position[i],lower[i], upper[i])
-		# print(self.position)
+		
 
 
