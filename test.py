@@ -40,7 +40,7 @@ class Objective_function():
 
 
 def fun(x1,x2):
-	return x1 + x2
+	return x1**2 + x2**2
 
 up_bounds = [10,10]
 lo_bounds = [0, 0]
